@@ -26,15 +26,6 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "..", "index.html"));
 });
 
-app.get("/health", (req, res) => {
-    res.json({
-        status: "ok",
-        timestamp: new Date().toISOString(),
-        service: "ProjetoSenai-IA",
-        version: "1.0.0"
-    });
-});
-
 app.post("/chat", async (req, res) => {
     await sendQuestion(req.body);
     res.send(history.slice(-1));
