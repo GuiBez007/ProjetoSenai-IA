@@ -1,6 +1,8 @@
 import express from "express"
 import cors from "cors"
 import { json } from "body-parser";
+import dotenv from "dotenv";
+dotenv.config();
 
 import { sendQuestion } from "./chat.js";
 import { history } from "./history.js"
@@ -10,9 +12,12 @@ const app = express();
 app.use(express.json())
 app.use(cors())
 
-app.listen(3000, () => {
-    console.log("Server running on port 3000")
-})
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
+});
+
 
 // GET n POST
 app.get("/", (req, res) => {
