@@ -4,6 +4,12 @@ import { json } from "body-parser";
 import dotenv from "dotenv";
 dotenv.config();
 
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 import { sendQuestion } from "./chat.js";
 import { history } from "./history.js"
 
@@ -21,7 +27,7 @@ app.listen(PORT, () => {
 
 // GET n POST
 app.get("/", (req, res) => {
-    res.send(history.slice(-1))
+    res.sendFile(path.join(__dirname, "index.html"));
 })
 
 app.get("/health", (req, res) => {
