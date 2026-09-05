@@ -17,10 +17,13 @@ sendBtn.addEventListener("click", async () => {
     const aiResponse = await response.json()
 
     currentChat.innerHTML = `
-        Prompt do usuário: 
-        ${userInput.value}
-
-        Resposta da IA: 
-        ${aiResponse[0].content}
-    `
+        <div>
+            <strong>Prompt do usuário:</strong>
+            <pre>${userInput.value}</pre>
+        </div>
+        <div>
+            <strong>Resposta da IA:</strong>
+            <pre>${aiResponse[0].content}</pre>
+        </div>
+    `;
 })
